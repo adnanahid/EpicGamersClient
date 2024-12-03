@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, userSignOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    userSignOut();
+  };
+  console.log(user);
   return (
-    <div className="navbar fixed">
+    <div className="navbar fixed my-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,13 +48,38 @@ const Navbar = () => {
         <NavLink to="/myReview">My Review</NavLink>
         <NavLink to="/gameWatchList">Game WatchList</NavLink>
       </div>
-      <div className="navbar-end gap-5">
-        <Link to="/login" className="">
-          Log In
-        </Link>
-        <Link to="/register" className="">
-          Sign Up
-        </Link>
+      <div className="navbar-end gap-3">
+        {user ? (
+          <div className="">
+            <div className="flex gap-5 justify-end ">
+              <button onClick={handleSignOut} className="text-white btn">
+                Sign Out
+              </button>
+              <div className="tooltip" data-tip={user?.displayName}>
+                <img
+                  src={user?.photoURL}
+                  alt={user?.displayName}
+                  className="lg:w-12 w-8 rounded-full"
+                ></img>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex gap-2">
+            <Link
+              to="/login"
+              className="lg:px-8 lg:py-2 px-2 py-1 border text-white"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="lg:px-6 lg:py-2 px-2 py-1 border text-white"
+            >
+              Sign up
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
