@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-banner{
+  background-image: url("../src/assets/banner.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.active{
+  text-decoration: underline;
+}
+
+.active:hover {
+  color: #1e90ff; /* Cool blue on hover */
+  transform: translateY(-3px);
+  transition: 300ms;
+}
+
+html{
+  overflow-y: scroll;
+}
