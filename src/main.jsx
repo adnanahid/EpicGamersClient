@@ -12,6 +12,7 @@ import WishList from "./components/Pages/WishList";
 import AuthProvider from "./components/Provider/AuthProvider";
 import Register from "./components/Pages/Register";
 import ReviewDetails from "./components/Pages/ReviewDetails";
+import UpdateReview from "./components/Pages/UpdateReview";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
         path: "/myReview",
         loader: () => fetch(`http://localhost:3333/reviews`),
         element: <MyReview></MyReview>,
+      },
+      {
+        path: "/updateReviews/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3333/reviews/${params.id}`),
+        element: <UpdateReview></UpdateReview>,
       },
       {
         path: "/wishList",

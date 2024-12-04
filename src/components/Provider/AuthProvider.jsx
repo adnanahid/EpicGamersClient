@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUserProfile = (updateData) => {
-    setLoading(true)
+    setLoading(true);
     return updateProfile(auth.currentUser, updateData);
   };
 
@@ -59,6 +59,8 @@ const AuthProvider = ({ children }) => {
     loginUser,
     updateUserProfile,
     userSignOut,
+    loading,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={allAuth}>{children}</AuthContext.Provider>
