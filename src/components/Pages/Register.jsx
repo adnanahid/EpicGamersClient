@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { user, setUser, createUser, updateUserProfile } =
+  const { setUser, createUser, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);

@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddReview = () => {
-  const handleSubmit = () => {
+  const { user } = useContext(AuthContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const thumbnail = e.target.thumbnail.value;
+    const title = e.target.title.value;
+    const review = e.target.review.value;
+    const year = e.target.year.value;
+    const genres = e.target.genres.value;
+    const email = e.target.email.value;
+    const name = e.target.name.value;
+    console.log(thumbnail, title, review, year, genres, email, name);
+    const reviewInfo = { thumbnail, title, review, year, genres, email, name };
+
+    fetch("http://localhost:3333/reviews", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(reviewInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+
     alert("ok");
   };
   return (
@@ -17,13 +41,13 @@ const AddReview = () => {
                 className="block text-gray-400 text-sm mb-2"
                 htmlFor="photo"
               >
-                Photo URL
+                Thumbnail
               </label>
               <input
                 type="text"
-                name="photo"
-                id="photo"
-                placeholder="Game Cover Image"
+                name="thumbnail"
+                id="thumbnail"
+                placeholder="Thumbnail URL"
                 className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -51,12 +75,12 @@ const AddReview = () => {
               >
                 Review
               </label>
-              <input
+              <textarea
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Write your review here"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                name="review"
+                id="review"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
+                placeholder="Write your detailed review"
               />
             </div>
             {/* Published year */}
@@ -103,6 +127,8 @@ const AddReview = () => {
                 type="email"
                 name="email"
                 id="email"
+                readOnly
+                defaultValue={user?.email}
                 placeholder="Enter your Email"
                 className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -119,6 +145,8 @@ const AddReview = () => {
                 type="name"
                 name="name"
                 id="name"
+                readOnly
+                defaultValue={user?.displayName}
                 placeholder="Enter Game's Name"
                 className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -129,16 +157,8 @@ const AddReview = () => {
               className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition duration-300"
               type="submit"
             >
-              REGISTER
+              POST
             </button>
-
-            {/* Login Link */}
-            <p className="text-gray-400 text-sm mt-4 text-center">
-              Have an account?
-              <Link to="/login" className="text-blue-500 hover:underline">
-                Login
-              </Link>
-            </p>
           </form>
         </div>
       </div>

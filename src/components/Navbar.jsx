@@ -42,7 +42,7 @@ const Navbar = () => {
             <NavLink to="/allReview">All Review</NavLink>
             <NavLink to="/addReview">Add Review</NavLink>
             <NavLink to="/myReview">My Review</NavLink>
-            <NavLink to="/gameWatchList">Game WatchList</NavLink>
+            <NavLink to="/wishList">WishList</NavLink>
           </div>
         </div>
         <a className="btn btn-ghost text-xl">Chill Gamer</a>
@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className="lg:flex gap-5">
             <NavLink to="/addReview">Add Review</NavLink>
             <NavLink to="/myReview">My Review</NavLink>
-            <NavLink to="/gameWatchList">Game WatchList</NavLink>
+            <NavLink to="/wishList">WishList</NavLink>
           </div>
         ) : (
           <div></div>

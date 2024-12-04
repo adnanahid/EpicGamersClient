@@ -8,9 +8,10 @@ import AllReview from "./components/Pages/AllReview";
 import AddReview from "./components/Pages/AddReview";
 import LogIn from "./components/Pages/LogIn";
 import MyReview from "./components/Pages/MyReview";
-import GameWatchList from "./components/Pages/GameWatchList";
+import WishList from "./components/Pages/WishList";
 import AuthProvider from "./components/Provider/AuthProvider";
 import Register from "./components/Pages/Register";
+import ReviewDetails from "./components/Pages/ReviewDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/allReview",
+        loader: () => fetch("http://localhost:3333/reviews"),
         element: <AllReview></AllReview>,
+      },
+      {
+        path: "/reviews/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3333/reviews/${params.id}`),
+        element: <ReviewDetails></ReviewDetails>,
       },
       {
         path: "/addReview",
@@ -31,11 +39,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/myReview",
+        loader: () => fetch(`http://localhost:3333/reviews`),
         element: <MyReview></MyReview>,
       },
       {
-        path: "/gameWatchList",
-        element: <GameWatchList></GameWatchList>,
+        path: "/wishList",
+        element: <WishList></WishList>,
       },
       {
         path: "/login",
