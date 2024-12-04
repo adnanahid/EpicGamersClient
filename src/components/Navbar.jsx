@@ -51,7 +51,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allReview">All Review</NavLink>
         {user ? (
-          <div>
+          <div className="lg:flex gap-5">
             <NavLink to="/addReview">Add Review</NavLink>
             <NavLink to="/myReview">My Review</NavLink>
             <NavLink to="/gameWatchList">Game WatchList</NavLink>
@@ -80,11 +80,8 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="flex gap-2">
-            <Link
-              to="/login"
-              className="lg:px-8 lg:py-2 px-2 py-1 text-white"
-            >
+          <div className="flex">
+            <Link to="/login" className="lg:px-8 lg:py-2 px-2 py-1 text-white">
               Login
             </Link>
             <Link

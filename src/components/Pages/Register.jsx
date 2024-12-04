@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { user, setUser, createUser, updateUserProfile } =
@@ -21,8 +24,6 @@ const Register = () => {
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser(user);
-        console.log(user);
         updateUserProfile({
           displayName,
           photoURL,
@@ -31,8 +32,22 @@ const Register = () => {
             setUser({ ...user, displayName, photoURL }); // Update state with user data
           })
           .catch((error) => console.error("Profile update error:", error));
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
         navigate("/");
-
         fetch("http://localhost:3333/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
