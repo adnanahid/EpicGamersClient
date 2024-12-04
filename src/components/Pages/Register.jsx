@@ -23,11 +23,33 @@ const Register = () => {
         const user = userCredential.user;
         setUser(user);
         console.log(user);
-        navigate("/");
         updateUserProfile({
           displayName,
           photoURL,
-        });
+        })
+          .then(() => {
+            setUser({ ...user, displayName, photoURL }); // Update state with user data
+          })
+          .catch((error) => console.error("Profile update error:", error));
+        navigate("/");
+
+        fetch("http://localhost:3333/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            displayName,
+            email,
+            photoURL,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            console.log("User saved:", data);
+          })
+          .catch((error) => {
+            console.error("Error saving user:", error);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
