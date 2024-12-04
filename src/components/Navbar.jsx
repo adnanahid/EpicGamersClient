@@ -4,10 +4,16 @@ import { AuthContext } from "./Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(AuthContext);
+
   const handleSignOut = () => {
-    userSignOut();
+    userSignOut()
+      .then(() => {
+        console.log("User signed out successfully");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
   };
-  console.log(user);
   return (
     <div className="navbar fixed my-6">
       <div className="navbar-start">
@@ -44,9 +50,15 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex gap-5">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allReview">All Review</NavLink>
-        <NavLink to="/addReview">Add Review</NavLink>
-        <NavLink to="/myReview">My Review</NavLink>
-        <NavLink to="/gameWatchList">Game WatchList</NavLink>
+        {user ? (
+          <div>
+            <NavLink to="/addReview">Add Review</NavLink>
+            <NavLink to="/myReview">My Review</NavLink>
+            <NavLink to="/gameWatchList">Game WatchList</NavLink>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
       <div className="navbar-end gap-3">
         {user ? (
@@ -55,12 +67,15 @@ const Navbar = () => {
               <button onClick={handleSignOut} className="text-white btn">
                 Sign Out
               </button>
-              <div className="tooltip" data-tip={user?.displayName}>
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user?.displayName || "User"}
+              >
                 <img
-                  src={user?.photoURL}
-                  alt={user?.displayName}
-                  className="lg:w-12 w-8 rounded-full"
-                ></img>
+                  src={user?.photoURL || "https://via.placeholder.com/150"}
+                  alt={user?.displayName || "User Avatar"}
+                  className="lg:w-12 w-8 lg:h-12 h-8 rounded-full"
+                />
               </div>
             </div>
           </div>
@@ -68,13 +83,13 @@ const Navbar = () => {
           <div className="flex gap-2">
             <Link
               to="/login"
-              className="lg:px-8 lg:py-2 px-2 py-1 border text-white"
+              className="lg:px-8 lg:py-2 px-2 py-1 text-white"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="lg:px-6 lg:py-2 px-2 py-1 border text-white"
+              className="lg:px-6 lg:py-2 px-2 py-1 text-white"
             >
               Sign up
             </Link>

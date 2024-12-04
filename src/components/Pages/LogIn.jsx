@@ -1,26 +1,57 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const LogIn = () => {
+  const { setUser, loginWithGoogle } = useContext(AuthContext);
+  const googleRegister = (e) => {
+    e.preventDefault();
+
+    loginWithGoogle()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        console.log(user);
+        navigate("/");
+        fetch("http://localhost:3333/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            name: user?.displayName || "Anonymous User",
+            email: user.email,
+            photo: user?.photoURL || "https://default-photo-url.com",
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Google user saved:", data);
+          })
+          .catch((error) => {
+            console.error("Error saving Google user:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error with Google sign-in:", error.message);
+      });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <div className="flex w-full max-w-4xl bg-gray-800 rounded-lg overflow-hidden shadow-lg">
         {/* Left Image Section */}
         <div className="w-1/2 bg-cover bg-center bg-banner">
-          <div className="p-8 text-gray-400">
+          {/* <div className="p-8 text-gray-400">
             <h2 className="text-4xl font-bold mb-4">
               Pen isn't mightier then a sword. Pen's do no do battle nor swords
               poetry. Mightier is the hand that knows when pick up the pen or
               pick up the sword
             </h2>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Form Section */}
         <div className="w-1/2 bg-gray-900 p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6">
-            REGISTRATION
-          </h2>
+          <h2 className="text-2xl text-white font-semibold mb-6">LOGIN</h2>
           <form>
             {/* Email Input */}
             <div className="mb-4">
@@ -59,22 +90,20 @@ const LogIn = () => {
 
             {/* Registration Button */}
             <button
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition duration-300"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition duration-300 my-4"
               type="submit"
             >
-              REGISTER
+              LOGIN
             </button>
 
             {/* Social Media Buttons */}
-            <p className="text-center text-gray-400 my-4 text-sm">
-              or Register With
-            </p>
-            <div className="flex justify-center space-x-4">
+            <div className="flex justify-center space-x-4 my-4">
               <button
+                onClick={googleRegister}
                 className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold transition duration-300"
-                type="submit"
+                type="button"
               >
-                REGISTER WITH GOOGLE
+                LOGIN WITH GOOGLE
               </button>
             </div>
 

@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const Register = () => {
-  const { setUser, registerWithGoogle } = useContext(AuthContext);
+  const { setUser, createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -12,40 +16,30 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-    console.log(name, email, photo, password);
-  };
+    const userInfo = { displayName: name, email: email, photoURL: photo };
 
-  const googleRegister = (e) => {
-    e.preventDefault();
-    registerWithGoogle()
+    createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser(user);
+        setUser(userInfo);
+        console.log(userInfo);
         navigate("/");
         fetch("http://localhost:3333/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-          }),
+          body: JSON.stringify(userInfo),
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            console.log("User saved:", data);
+          })
+          .catch((error) => {
+            console.error("Error saving user:", error);
           });
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-        console.log(errorMessage);
+        console.error("Error creating user:", errorMessage);
       });
   };
 
@@ -70,10 +64,11 @@ const Register = () => {
                 Name
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="name"
+                name="name"
                 id="name"
                 placeholder="Enter your Name"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Email Input */}
@@ -85,10 +80,11 @@ const Register = () => {
                 Email
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="email"
+                name="email"
                 id="email"
                 placeholder="Enter your Email"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Photo URL Input */}
@@ -100,10 +96,11 @@ const Register = () => {
                 Photo URL
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="photo"
+                name="photo"
                 id="photo"
                 placeholder="Enter your Photo URL"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -116,15 +113,19 @@ const Register = () => {
                 Password
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="password"
+                type={showPassword ? "text" : "password"}
+                name="password"
                 id="password"
                 placeholder="Enter Your Password"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
                 type="button"
-                className="absolute right-4 top-9 text-gray-400 hover:text-white"
-              ></button>
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-10 text-gray-600"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </div>
 
             {/* Registration Button */}
@@ -134,20 +135,6 @@ const Register = () => {
             >
               REGISTER
             </button>
-
-            {/* Social Media Buttons */}
-            <p className="text-center text-gray-400 my-4 text-sm">
-              or Register With
-            </p>
-            <div className="flex justify-center space-x-4">
-              <button
-                onClick={googleRegister}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold transition duration-300"
-                type="submit"
-              >
-                REGISTER WITH GOOGLE
-              </button>
-            </div>
 
             {/* Login Link */}
             <p className="text-gray-400 text-sm mt-4 text-center">
