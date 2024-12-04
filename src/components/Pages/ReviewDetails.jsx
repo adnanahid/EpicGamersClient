@@ -7,9 +7,9 @@ const ReviewDetails = () => {
   const { thumbnail, title, review, year, genres, email, name } = reviewData;
   return (
     <div className="pt-48">
-      <div className="max-w-xl mx-auto bg-gray-800 text-white rounded-lg shadow-md overflow-hidden">
+      <div className="max-w-3xl mx-auto bg-gray-800 text-white rounded-lg shadow-md overflow-hidden">
         {/* Thumbnail */}
-        <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
+        <img src={thumbnail} alt={title} className="w-full h-96 object-cover" />
 
         {/* Card Content */}
         <div className="p-6">
@@ -37,6 +37,14 @@ const ReviewDetails = () => {
             <p>
               <span className="font-semibold">Email:</span> {email}
             </p>
+          </div>
+          <div className="card-actions justify-center my-4">
+            <div
+              // to={`/reviews/${review._id}`}
+              className="btn btn-primary w-full"
+            >
+              Add To Wish List
+            </div>
           </div>
         </div>
       </div>

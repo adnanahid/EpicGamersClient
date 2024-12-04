@@ -9,11 +9,12 @@ const updateReview = () => {
     const thumbnail = e.target.thumbnail.value;
     const title = e.target.title.value;
     const review = e.target.review.value;
+    const rating = e.target.rating.value;
     const year = e.target.year.value;
     const genres = e.target.genres.value;
 
     console.log(thumbnail, title, review, year, genres);
-    const reviewInfo = { thumbnail, title, review, year, genres };
+    const reviewInfo = { thumbnail, title, review, rating, year, genres };
 
     fetch(`http://localhost:3333/updateReviews/${data._id}`, {
       method: "PATCH",
@@ -23,8 +24,22 @@ const updateReview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Review Updated Successfully",
+        });
       });
-    alert("ok");
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -83,6 +98,25 @@ const updateReview = () => {
                 placeholder="Write your detailed review"
               />
             </div>
+            {/* Rating Input */}
+            <div className="mb-4">
+              <label
+                className="block text-gray-400 text-sm mb-2"
+                htmlFor="rating"
+              >
+                Rating
+              </label>
+              <input
+                type="number"
+                name="rating"
+                id="rating"
+                defaultValue={data.rating}
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
+                placeholder="Give your rating"
+                min="1"
+                max="5"
+              />
+            </div>
             {/* Published year */}
             <div className="mb-4">
               <label
@@ -108,14 +142,20 @@ const updateReview = () => {
               >
                 Genres
               </label>
-              <input
-                type="text"
+              <select
                 name="genres"
                 id="genres"
                 defaultValue={data.genres}
-                placeholder="which genres?"
                 className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              >
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="RPG">RPG</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Racing">Racing</option>
+                <option value="Card">Card</option>
+                <option value="Board">Board</option>
+              </select>
             </div>
 
             {/* Registration Button */}

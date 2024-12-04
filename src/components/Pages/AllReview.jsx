@@ -13,18 +13,18 @@ const AllReview = () => {
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto"
+            className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto my-6"
           >
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
+            <figure className="object-contain">
+              <img src={review.thumbnail} alt={review.title} className="h-[300px] object-fit"/>
             </figure>
             <div className="card-body">
               <h2 className="card-title">{review.title}</h2>
-              <h2 className="card-title">{review._id}</h2>
               <p>{review.review}</p>
+              <p>{review.genres}</p>
+              <p>{review.name}</p>
+              <p>{review.year}</p>
+              <p>{review.email}</p>
               <div className="card-actions justify-center">
                 <Link
                   to={`/reviews/${review._id}`}
