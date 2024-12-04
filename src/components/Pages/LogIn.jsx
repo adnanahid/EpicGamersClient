@@ -3,32 +3,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const LogIn = () => {
-  const { setUser, loginWithGoogle } = useContext(AuthContext);
+  const { user, setUser, loginWithGoogle, loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error with Google sign-in:", error.message);
+      });
+  };
+
   const googleRegister = (e) => {
     e.preventDefault();
-
     loginWithGoogle()
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
         console.log(user);
         navigate("/");
-        fetch("http://localhost:3333/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            name: user?.displayName || "Anonymous User",
-            email: user.email,
-            photo: user?.photoURL || "https://default-photo-url.com",
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("Google user saved:", data);
-          })
-          .catch((error) => {
-            console.error("Error saving Google user:", error);
-          });
       })
       .catch((error) => {
         console.error("Error with Google sign-in:", error.message);
@@ -52,7 +54,7 @@ const LogIn = () => {
         {/* Right Form Section */}
         <div className="w-1/2 bg-gray-900 p-8">
           <h2 className="text-2xl text-white font-semibold mb-6">LOGIN</h2>
-          <form>
+          <form onSubmit={handleLogin}>
             {/* Email Input */}
             <div className="mb-4">
               <label
@@ -62,10 +64,11 @@ const LogIn = () => {
                 Email
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="email"
+                name="email"
                 id="email"
                 placeholder="Enter your Email"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Password Input */}
@@ -77,10 +80,11 @@ const LogIn = () => {
                 Password
               </label>
               <input
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="password"
+                name="password"
                 id="password"
                 placeholder="Enter Your Password"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
                 type="button"
@@ -95,26 +99,24 @@ const LogIn = () => {
             >
               LOGIN
             </button>
-
-            {/* Social Media Buttons */}
-            <div className="flex justify-center space-x-4 my-4">
-              <button
-                onClick={googleRegister}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold transition duration-300"
-                type="button"
-              >
-                LOGIN WITH GOOGLE
-              </button>
-            </div>
-
-            {/* Login Link */}
-            <p className="text-gray-400 text-sm mt-4 text-center">
-              Have an account?{" "}
-              <Link to="/register" className="text-blue-500 hover:underline">
-                Register
-              </Link>
-            </p>
           </form>
+          {/* Social Media Buttons */}
+          <div className="flex justify-center space-x-4 my-4">
+            <button
+              onClick={googleRegister}
+              className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold transition duration-300"
+            >
+              LOGIN WITH GOOGLE
+            </button>
+          </div>
+
+          {/* Login Link */}
+          <p className="text-gray-400 text-sm mt-4 text-center">
+            Have an account?{" "}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Register
+            </Link>
+          </p>
         </div>
       </div>
     </div>

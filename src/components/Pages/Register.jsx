@@ -5,41 +5,34 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 
 const Register = () => {
-  const { setUser, createUser } = useContext(AuthContext);
+  const { user, setUser, createUser, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const photo = e.target.photo.value;
-    const password = e.target.password.value;
 
-    const userInfo = { displayName: name, email: email, photoURL: photo };
+    const displayName = e.target.name.value;
+    const photoURL = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser(userInfo);
-        console.log(userInfo);
+        setUser(user);
+        console.log(user);
         navigate("/");
-        fetch("http://localhost:3333/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("User saved:", data);
-          })
-          .catch((error) => {
-            console.error("Error saving user:", error);
-          });
+        updateUserProfile({
+          displayName,
+          photoURL,
+        });
       })
       .catch((error) => {
+        const errorCode = error.code;
         const errorMessage = error.message;
-        console.error("Error creating user:", errorMessage);
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -54,7 +47,7 @@ const Register = () => {
           <h2 className="text-2xl text-white font-semibold mb-6">
             REGISTRATION
           </h2>
-          <form onSubmit={handleRegister}>
+          <form onSubmit={handleSubmit}>
             {/* Name Input */}
             <div className="mb-4">
               <label
@@ -107,17 +100,18 @@ const Register = () => {
             {/* Password Input */}
             <div className="mb-4 relative">
               <label
-                className="block text-gray-400 text-sm mb-2"
+                className="block text-gray-600 text-sm mb-2"
                 htmlFor="password"
               >
                 Password
               </label>
               <input
+                id="password"
                 type={showPassword ? "text" : "password"}
                 name="password"
-                id="password"
-                placeholder="Enter Your Password"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border  bg-gray-800 text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 type="button"
