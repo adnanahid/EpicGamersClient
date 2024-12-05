@@ -13,11 +13,13 @@ import AuthProvider from "./components/Provider/AuthProvider";
 import Register from "./components/Pages/Register";
 import ReviewDetails from "./components/Pages/ReviewDetails";
 import UpdateReview from "./components/Pages/UpdateReview";
+import Error from "./components/Pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -51,7 +53,8 @@ const router = createBrowserRouter([
         element: <UpdateReview></UpdateReview>,
       },
       {
-        path: "/wishList",
+        path: "/wishlist",
+        loader: () => fetch(`http://localhost:3333/wishlist`),
         element: <WishList></WishList>,
       },
       {

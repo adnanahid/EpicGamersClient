@@ -8,6 +8,11 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.bg-error{
+  background-image: url("../src/assets/errorPage.png");
+  background-position: center;
+  background-repeat: no-repeat; 
+}
 
 .active{
   text-decoration: underline;

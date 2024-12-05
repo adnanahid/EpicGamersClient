@@ -20,11 +20,8 @@ const AllReview = () => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">{review.title}</h2>
-              <p>{review.review}</p>
-              <p>{review.genres}</p>
-              <p>{review.name}</p>
-              <p>{review.year}</p>
-              <p>{review.email}</p>
+              <p>Author: {review.name}</p>
+              <p>Email: {review.email}</p>
               <div className="card-actions justify-center">
                 <Link
                   to={`/reviews/${review._id}`}
