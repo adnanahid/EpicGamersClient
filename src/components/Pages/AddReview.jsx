@@ -53,8 +53,8 @@ const AddReview = () => {
       });
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="w-full max-w-2xl bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
         <div className="bg-gray-900 p-8">
           <h2 className="text-2xl text-white font-semibold mb-6">REVIEW</h2>
           <form onSubmit={handleSubmit}>
