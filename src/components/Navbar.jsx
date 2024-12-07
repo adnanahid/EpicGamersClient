@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./Provider/AuthProvider";
 import "@theme-toggles/react/css/Simple.css";
 import { Simple } from "@theme-toggles/react";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(AuthContext);
@@ -14,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     const theme = toggle ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", JSON.stringify(toggle)); 
+    localStorage.setItem("theme", JSON.stringify(toggle));
   }, [toggle]);
 
   const handleSignOut = () => {
@@ -79,9 +81,15 @@ const Navbar = () => {
             <button onClick={handleSignOut} className="text-white btn">
               Sign Out
             </button>
+            {/* <a data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!">
+              ◕‿‿◕
+            </a> */}
+            <Tooltip id="my-tooltip" />
             <div
-              className="tooltip tooltip-bottom"
-              data-tip={user?.displayName || "User"}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={user?.displayName || "User"}
+              // className="tooltip tooltip-bottom"
+              // data-tip={user?.displayName || "User"}
             >
               <img
                 src={user?.photoURL || "https://via.placeholder.com/150"}
