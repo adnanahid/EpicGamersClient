@@ -7,7 +7,7 @@ const articles = [
     description:
       "With numerous classes, countless skills, and a plethora of challenges, Path of Exile 2 is shaping up to be a meaty ARPG sequel",
     time: "20h ago",
-    image: "https://via.placeh", // Replace with the actual image URL
+    image: "https://via.placeholder.com/150", // Replace with the actual image URL
   },
   {
     title: "Marvel Rivals: A guide to all 33 heroes and their playstyles",

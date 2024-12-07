@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const AllReview = () => {
   const reviewsData = useLoaderData();
   const [reviews, setReviews] = useState(reviewsData);
+  console.log(reviews);
 
   const handleSortByYear = () => {
     const sortedReviews = [...reviews].sort((a, b) => b.year - a.year); // Descending order
@@ -15,28 +16,110 @@ const AllReview = () => {
     setReviews(sortedReviews);
   };
 
+  const handleFilterByAction = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Action")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterByAdventure = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Adventure")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterByRPG = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("RPG")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterBySimulation = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Simulation")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterByCard = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Card")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterByRacing = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Racing")
+    );
+    setReviews(filteredReviews);
+  };
+
+  const handleFilterByBoard = () => {
+    const filteredReviews = reviewsData.filter((review) =>
+      review.genres.includes("Board")
+    );
+    setReviews(filteredReviews);
+  };
+
   return (
     <div className="md:pt-48 max-w-screen-xl mx-auto">
       <h1 className="text-5xl font-bold text-center mb-24">
         All reviews are here
       </h1>
 
-      {/* Dropdown button */}
-      <div className="dropdown flex items-center justify-center">
-        <div tabIndex={0} role="button" className="btn m-1 w-24 mb-36">
-          Sort
+      {/* Dropdown buttons */}
+      <div className="flex items-center justify-center mb-20">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn m-1 w-28">
+            Sort By
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+          >
+            <li>
+              <button onClick={handleSortByYear}>Year</button>
+            </li>
+            <li>
+              <button onClick={handleSortByRating}>Rating</button>
+            </li>
+          </ul>
         </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-        >
-          <li>
-            <button onClick={handleSortByYear}>Year</button>
-          </li>
-          <li>
-            <button onClick={handleSortByRating}>Rating</button>
-          </li>
-        </ul>
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn m-1 w-32">
+            Filter By
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+          >
+            <li>
+              <button onClick={handleFilterByAction}>Action</button>
+            </li>
+            <li>
+              <button onClick={handleFilterByAdventure}>Adventure</button>
+            </li>
+            <li>
+              <button onClick={handleFilterByRPG}>RPG</button>
+            </li>
+            <li>
+              <button onClick={handleFilterBySimulation}>Simulation</button>
+            </li>
+            <li>
+              <button onClick={handleFilterByCard}>Card</button>
+            </li>
+            <li>
+              <button onClick={handleFilterByRacing}>Racing</button>
+            </li>
+            <li>
+              <button onClick={handleFilterByBoard}>Board</button>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Review cards */}
