@@ -1,7 +1,11 @@
 import React from "react";
-import Banner from "./Banner";
 import { Link, useLoaderData } from "react-router-dom";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
+import Slider from "./Slider";
+import ArticlesList from "./News";
+import Accordion from "./Accordion";
 
 const Home = () => {
   const data = useLoaderData();
@@ -16,10 +20,10 @@ const Home = () => {
 
   return (
     <div>
-      <Banner></Banner>
+      <Slider></Slider>
 
-      <div className="my-36">
-        <h1 className="text-5xl font-bold text-center my-12">
+      <div className="my-36 max-w-screen-xl mx-auto">
+        <h1 className="text-4xl font-bold text-center my-12">
           Highest Rated Game
         </h1>
         <Fade cascade damping={0.5}>
@@ -28,13 +32,13 @@ const Home = () => {
               {sortedData.map((review, index) => (
                 <div
                   key={index}
-                  className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto"
+                  className="card bg-base-100 w-96 md:w-[400px] shadow-xl mx-auto"
                 >
                   <figure>
                     <img
                       src={review.thumbnail}
                       alt={review.title}
-                      className="h-[280px]"
+                      className="h-[220px]"
                     />
                   </figure>
                   <div className="card-body">
@@ -62,6 +66,10 @@ const Home = () => {
           </div>
         </Fade>
       </div>
+
+      <ArticlesList></ArticlesList>
+
+      <Accordion></Accordion>
     </div>
   );
 };

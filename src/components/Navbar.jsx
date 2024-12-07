@@ -56,7 +56,7 @@ const Navbar = () => {
             <NavLink to="/wishList">WishList</NavLink>
           </div>
         </div>
-        <a className="btn btn-ghost text-xl">Chill Gamer</a>
+        <a className="btn btn-ghost text-xl">Epic Gamer</a>
       </div>
       <div className="navbar-center hidden lg:flex gap-5">
         <NavLink to="/">Home</NavLink>
@@ -78,18 +78,13 @@ const Navbar = () => {
               duration={750}
             />
 
-            <button onClick={handleSignOut} className="text-white btn">
+            <button onClick={handleSignOut} className="btn">
               Sign Out
             </button>
-            {/* <a data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!">
-              ◕‿‿◕
-            </a> */}
             <Tooltip id="my-tooltip" />
             <div
               data-tooltip-id="my-tooltip"
               data-tooltip-content={user?.displayName || "User"}
-              // className="tooltip tooltip-bottom"
-              // data-tip={user?.displayName || "User"}
             >
               <img
                 src={user?.photoURL || "https://via.placeholder.com/150"}
