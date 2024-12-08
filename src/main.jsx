@@ -24,18 +24,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:3333/topReviews"),
+        loader: () =>
+          fetch("https://a10-server-side-iota.vercel.app/topReviews"),
         element: <Home></Home>,
       },
       {
         path: "/allReview",
-        loader: () => fetch("http://localhost:3333/reviews"),
+        loader: () => fetch("https://a10-server-side-iota.vercel.app/reviews"),
         element: <AllReview></AllReview>,
       },
       {
         path: "/reviews/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3333/reviews/${params.id}`),
+          fetch(`https://a10-server-side-iota.vercel.app/reviews/${params.id}`),
         element: (
           <Private>
             <ReviewDetails></ReviewDetails>
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myReview",
-        loader: () => fetch(`http://localhost:3333/reviews`),
+        loader: () => fetch(`https://a10-server-side-iota.vercel.app/reviews`),
         element: (
           <Private>
             <MyReview></MyReview>,
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: "/updateReviews/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3333/reviews/${params.id}`),
+          fetch(`https://a10-server-side-iota.vercel.app/reviews/${params.id}`),
         element: (
           <Private>
             <UpdateReview></UpdateReview>,
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        loader: () => fetch(`http://localhost:3333/wishlist`),
+        loader: () => fetch(`https://a10-server-side-iota.vercel.app/wishlist`),
         element: (
           <Private>
             <WishList></WishList>,

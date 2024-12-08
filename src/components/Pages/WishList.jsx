@@ -10,7 +10,7 @@ const WishList = () => {
 
   // Filter wishlist based on user email
   const myWishlist = wishlists.filter(
-    (wishlist) => wishlist.email === user?.email
+    (wishlist) => wishlist.userEmail === user?.email
   );
 
   // Show loading spinner if data is still loading

@@ -68,7 +68,7 @@ const Register = () => {
         });
         navigate("/");
 
-        fetch("http://localhost:3333/users", {
+        fetch("https://a10-server-side-iota.vercel.app/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({

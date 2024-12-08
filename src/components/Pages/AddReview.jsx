@@ -26,7 +26,7 @@ const AddReview = () => {
       name,
     };
 
-    fetch("http://localhost:3333/reviews", {
+    fetch("https://a10-server-side-iota.vercel.app/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(reviewInfo),
@@ -56,7 +56,9 @@ const AddReview = () => {
     <div className="min-h-screen flex items-center justify-center pt-12">
       <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
         <div className="p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6 text-center">POST YOUR REVIEW</h2>
+          <h2 className="text-2xl text-white font-semibold mb-6 text-center">
+            POST YOUR REVIEW
+          </h2>
           <form onSubmit={handleSubmit}>
             {/* Game Cover IMG URL Input */}
             <div className="mb-4">

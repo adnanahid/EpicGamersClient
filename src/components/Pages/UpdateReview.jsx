@@ -16,7 +16,7 @@ const updateReview = () => {
     console.log(thumbnail, title, review, year, genres);
     const reviewInfo = { thumbnail, title, review, rating, year, genres };
 
-    fetch(`http://localhost:3333/updateReviews/${data._id}`, {
+    fetch(`https://a10-server-side-iota.vercel.app/updateReviews/${data._id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(reviewInfo),
@@ -45,7 +45,9 @@ const updateReview = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
         <div className="p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6 text-center">UPDATE REVIEW</h2>
+          <h2 className="text-2xl text-white font-semibold mb-6 text-center">
+            UPDATE REVIEW
+          </h2>
           <form onSubmit={handleSubmit}>
             {/* Game Cover IMG URL Input */}
             <div className="mb-4">
