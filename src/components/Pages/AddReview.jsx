@@ -1,30 +1,33 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const thumbnail = e.target.thumbnail.value;
-    const title = e.target.title.value;
-    const review = e.target.review.value;
-    const rating = e.target.rating.value;
-    const year = e.target.year.value;
-    const genres = e.target.genres.value;
-    const email = e.target.email.value;
-    const name = e.target.name.value;
-    console.log(thumbnail, title, review, year, rating, genres, email, name);
-    const reviewInfo = {
-      thumbnail,
-      title,
-      review,
-      year,
-      rating,
-      genres,
-      email,
-      name,
-    };
+    const thumbnail = e.target.thumbnail.value.trim();
+    const title = e.target.title.value.trim();
+    const review = e.target.review.value.trim();
+    const rating = e.target.rating.value.trim();
+    const year = e.target.year.value.trim();
+    const genres = e.target.genres.value.trim();
+    const email = e.target.email.value.trim();
+    const name = e.target.name.value.trim();
+
+    // Validate inputs
+    if (!thumbnail || !title || !review || !rating || !year || !genres) {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Fields",
+        text: "Please fill out all the required fields.",
+      });
+      return;
+    }
+
+    const reviewInfo = { thumbnail, title, review, rating, year, genres, email, name };
 
     fetch("https://a10-server-side-iota.vercel.app/reviews", {
       method: "POST",
@@ -34,54 +37,47 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();
-        console.log(data);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
+        Swal.fire({
           icon: "success",
           title: "Review Posted Successfully",
         });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: "Failed to post the review. Please try again.",
+        });
+        console.error(err);
       });
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center pt-12">
       <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
         <div className="p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6 text-center">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
             POST YOUR REVIEW
           </h2>
           <form onSubmit={handleSubmit}>
-            {/* Game Cover IMG URL Input */}
+            {/* Thumbnail URL */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="photo"
-              >
-                Thumbnail
+              <label className="block text-sm mb-2" htmlFor="thumbnail">
+                Thumbnail (URL)
               </label>
               <input
                 type="text"
                 name="thumbnail"
                 id="thumbnail"
                 placeholder="Thumbnail URL"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
-            {/* Game's Name Input */}
+
+            {/* Game's Name */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="title">
                 Game's Name
               </label>
               <input
@@ -89,49 +85,45 @@ const AddReview = () => {
                 name="title"
                 id="title"
                 placeholder="Enter Game's Name"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
-            {/* Description Input */}
+
+            {/* Review */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
-                Review
+              <label className="block text-sm mb-2" htmlFor="review">
+                Review Description
               </label>
               <textarea
-                type="text"
                 name="review"
                 id="review"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
                 placeholder="Write your detailed review"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
-            {/* Rating Input */}
+
+            {/* Rating */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="rating"
-              >
-                Review
+              <label className="block text-sm mb-2" htmlFor="rating">
+                Rating (1-10)
               </label>
               <input
                 type="number"
                 name="rating"
                 id="rating"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
                 placeholder="Give your rating"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 min="1"
-                max="5"
+                max="10"
+                required
               />
             </div>
-            {/* Published year */}
+
+            {/* Published Year */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="year">
                 Published Year
               </label>
               <input
@@ -139,22 +131,25 @@ const AddReview = () => {
                 name="year"
                 id="year"
                 placeholder="Published Year"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </div>
+
             {/* Genres */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="genres">
                 Genres
               </label>
               <select
                 name="genres"
                 id="genres"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               >
+                <option value="" disabled selected>
+                  Select a Genre
+                </option>
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
                 <option value="RPG">RPG</option>
@@ -164,12 +159,10 @@ const AddReview = () => {
                 <option value="Board">Board</option>
               </select>
             </div>
-            {/* Email Input */}
+
+            {/* Email (Read-Only) */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="email"
-              >
+              <label className="block text-sm mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -178,32 +171,28 @@ const AddReview = () => {
                 id="email"
                 readOnly
                 defaultValue={user?.email}
-                placeholder="Enter your Email"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none cursor-not-allowed"
               />
             </div>
-            {/* Name Input */}
+
+            {/* Name (Read-Only) */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Name
               </label>
               <input
-                type="name"
+                type="text"
                 name="name"
                 id="name"
                 readOnly
                 defaultValue={user?.displayName}
-                placeholder="Enter Game's Name"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none cursor-not-allowed"
               />
             </div>
 
-            {/* Registration Button */}
+            {/* Submit Button */}
             <button
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition duration-300"
+              className="w-full bg-blue-500 text-white hover:bg-blue-600 py-2 rounded font-semibold transition duration-300"
               type="submit"
             >
               POST
@@ -216,3 +205,4 @@ const AddReview = () => {
 };
 
 export default AddReview;
+

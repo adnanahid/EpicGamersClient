@@ -24,7 +24,7 @@ const WishList = () => {
 
   if (!myWishlist.length) {
     return (
-      <div className="text-center flex flex-col items-center justify-center mt-8 pt-16">
+      <div className="text-center flex flex-col items-center justify-center mt-8 pt-36">
         <p className="text-lg md:text-xl font-medium text-gray-500">
           Your wishlist is empty!
         </p>

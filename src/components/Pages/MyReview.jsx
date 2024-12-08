@@ -72,7 +72,7 @@ const MyReview = () => {
           </p>
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="">
           <table className="min-w-full table-auto">
             <thead>
               <tr>
