@@ -10,13 +10,13 @@ import Accordion from "./Accordion";
 const Home = () => {
   const data = useLoaderData();
 
-  // Const Top 6 rated game
-  const topData = data.slice(1, 7);
+  // // Const Top 6 rated game
+  // const topData = data.slice(1, 7);
 
-  // Sort data by rating in descending order
-  const sortedData = [...topData].sort(
-    (a, b) => Number(b.rating) - Number(a.rating)
-  );
+  // // Sort data by rating in descending order
+  // const sortedData = [...topData].sort(
+  //   (a, b) => Number(b.rating) - Number(a.rating)
+  // );
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Home = () => {
         <Fade cascade damping={0.5}>
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3 space-y-10">
-              {sortedData.map((review, index) => (
+              {data.map((review, index) => (
                 <div
                   key={index}
                   className="card bg-base-100 w-96 md:w-[400px] shadow-xl mx-auto"

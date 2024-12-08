@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:3333/reviews"),
+        loader: () => fetch("http://localhost:3333/topReviews"),
         element: <Home></Home>,
       },
       {
