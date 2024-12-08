@@ -41,7 +41,7 @@ const LogIn = () => {
         hideProgressBar: true,
       });
 
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
     } catch (error) {
       console.error("Login Error:", error.message);
 
@@ -70,7 +70,7 @@ const LogIn = () => {
         hideProgressBar: true,
       });
 
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
     } catch (error) {
       console.error("Google Sign-in Error:", error.message);
 
