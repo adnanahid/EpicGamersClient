@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import noDataFound from "../../assets/nodatafound.jpg"
 
 const AllReview = () => {
   const reviewsData = useLoaderData();
   const [reviews, setReviews] = useState(reviewsData);
-  console.log(reviews);
 
   const handleSortByYear = () => {
     const sortedReviews = [...reviews].sort((a, b) => b.year - a.year); // Descending order
@@ -16,59 +16,17 @@ const AllReview = () => {
     setReviews(sortedReviews);
   };
 
-  const handleFilterByAction = () => {
+  const handleFilterByGenre = (genre) => {
     const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Action")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterByAdventure = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Adventure")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterByRPG = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("RPG")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterBySimulation = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Simulation")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterByCard = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Card")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterByRacing = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Racing")
-    );
-    setReviews(filteredReviews);
-  };
-
-  const handleFilterByBoard = () => {
-    const filteredReviews = reviewsData.filter((review) =>
-      review.genres.includes("Board")
+      review.genres.includes(genre)
     );
     setReviews(filteredReviews);
   };
 
   return (
-    <div className="md:pt-48 pt-24 max-w-screen-xl mx-auto">
-      <h1 className="text-3xl lg:text-4xl font-bold text-center ;lg:mb-24 mb-6">
-        All reviews are here
+    <div className="pt-24 max-w-screen-xl mx-auto min-h-screen">
+      <h1 className="text-3xl lg:text-4xl font-bold text-center mb-24">
+        All Reviews Are Here
       </h1>
 
       {/* Dropdown buttons */}
@@ -97,61 +55,63 @@ const AllReview = () => {
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
           >
-            <li>
-              <button onClick={handleFilterByAction}>Action</button>
-            </li>
-            <li>
-              <button onClick={handleFilterByAdventure}>Adventure</button>
-            </li>
-            <li>
-              <button onClick={handleFilterByRPG}>RPG</button>
-            </li>
-            <li>
-              <button onClick={handleFilterBySimulation}>Simulation</button>
-            </li>
-            <li>
-              <button onClick={handleFilterByCard}>Card</button>
-            </li>
-            <li>
-              <button onClick={handleFilterByRacing}>Racing</button>
-            </li>
-            <li>
-              <button onClick={handleFilterByBoard}>Board</button>
-            </li>
+            {["Action", "Adventure", "RPG", "Simulation", "Card", "Racing", "Board"].map(
+              (genre) => (
+                <li key={genre}>
+                  <button onClick={() => handleFilterByGenre(genre)}>
+                    {genre}
+                  </button>
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>
 
       {/* Review cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {reviews.map((review, index) => (
-          <div
-            key={index}
-            className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto my-6"
-          >
-            <figure className="object-contain">
-              <img
-                src={review.thumbnail}
-                alt={review.title}
-                className="h-52 md:h-64 lg:h-72 object-fit"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{review.title}</h2>
-              <p>Author: {review.name}</p>
-              <p>Email: {review.email}</p>
-              <div className="card-actions justify-center">
-                <Link
-                  to={`/reviews/${review._id}`}
-                  className="btn btn-primary w-full"
-                >
-                  Explore Details
-                </Link>
+      {reviews.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto my-6"
+            >
+              <figure className="object-contain">
+                <img
+                  src={review.thumbnail}
+                  alt={review.title}
+                  className="h-52 md:h-64 lg:h-72 object-fit"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{review.title}</h2>
+                <p>Author: {review.name}</p>
+                <p>Email: {review.email}</p>
+                <div className="card-actions justify-center">
+                  <Link
+                    to={`/reviews/${review._id}`}
+                    className="btn btn-primary w-full"
+                  >
+                    Explore Details
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center my-12">
+          <img
+            src={noDataFound}
+            alt="No data found"
+            className="mx-auto mb-6 w-64 h-auto"
+          />
+          <h2 className="text-2xl font-semibold text-gray-600">
+            No reviews available at the moment.
+          </h2>
+          <p className="text-gray-500">Try adjusting your filters or check back later.</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -45,7 +45,7 @@ const UpdateReview = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-2xl rounded-lg shadow-lg">
-        <div className="p-8 bg-white">
+        <div className="p-8">
           <h2 className="text-2xl font-semibold mb-6 text-center">
             UPDATE REVIEW
           </h2>
@@ -105,7 +105,7 @@ const UpdateReview = () => {
                 className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Give your rating"
                 min="1"
-                max="5"
+                max="10"
               />
             </div>
             {/* Published year */}

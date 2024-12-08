@@ -8,7 +8,7 @@ const Slider = () => {
 
   return (
     <AutoplaySlider
-      className="h-[1000px]"
+       className="h-[700px] md:-h[720px] lg:h-[1000px]"
       play={true}
       cancelOnInteraction={false}
       interval={3000}

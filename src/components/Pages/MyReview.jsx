@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { MdDelete } from "react-icons/md";
-import { MdModeEdit } from "react-icons/md";
+import { MdDelete, MdModeEdit } from "react-icons/md";
 import Swal from "sweetalert2";
+import noDataFound from "../../assets/nodatafound.jpg";
 
 const MyReview = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
@@ -32,9 +32,14 @@ const MyReview = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3333"}/reviews/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `${
+            process.env.REACT_APP_API_BASE_URL || "http://localhost:3333"
+          }/reviews/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => {
             if (!res.ok) throw new Error("Failed to delete the review.");
             return res.json();
@@ -53,7 +58,6 @@ const MyReview = () => {
     });
   };
 
-  // Show loading spinner if data is still loading
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -63,17 +67,25 @@ const MyReview = () => {
   }
 
   return (
-    <div className="py-16 px-4 md:px-8 max-w-screen-xl mx-auto min-h-screen">
-      <h1 className="text-3xl font-bold md:text-4xl text-center">MY REVIEW</h1>
+    <div className="pt-24 px-4 md:px-8 max-w-screen-xl mx-auto min-h-screen">
+      <h1 className="text-3xl font-bold md:text-4xl text-center mb-6">MY REVIEW</h1>
       {allReview.length === 0 ? (
-        <div className="flex items-center justify-center py-10">
-          <p className="text-lg font-semibold text-gray-600">
-            No reviews found. Start writing your first review!
+        <div className="text-center my-12">
+          <img
+            src={noDataFound}
+            alt="No data found"
+            className="mx-auto mb-6 w-64 h-auto"
+          />
+          <h2 className="text-2xl font-semibold text-gray-600">
+            No reviews available at the moment.
+          </h2>
+          <p className="text-gray-500">
+            Try adjusting your filters or check back later.
           </p>
         </div>
       ) : (
-        <div className="">
-          <table className="min-w-full table-auto">
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse">
             <thead>
               <tr>
                 <th className="px-4 py-2 text-center">#</th>
@@ -87,12 +99,12 @@ const MyReview = () => {
               {allReview.map((details, index) => (
                 <tr
                   key={details._id}
-                  className="text-center hover:bg-gray-50 border-t border-gray-200"
+                  className="text-center border-t border-gray-200"
                 >
-                  <td>{index + 1}</td>
-                  <td>{details.title}</td>
-                  <td>{details.review}</td>
-                  <td>
+                  <td className="px-4 py-2">{index + 1}</td>
+                  <td className="px-4 py-2">{details.title}</td>
+                  <td className="px-4 py-2">{details.review}</td>
+                  <td className="px-4 py-2">
                     <Link to={`/updateReviews/${details._id}`}>
                       <MdModeEdit
                         className="mx-auto text-blue-500 cursor-pointer text-lg md:text-xl"
@@ -101,7 +113,7 @@ const MyReview = () => {
                       />
                     </Link>
                   </td>
-                  <td>
+                  <td className="px-4 py-2">
                     <MdDelete
                       onClick={() => handleDelete(details._id)}
                       className="mx-auto text-red-500 cursor-pointer text-lg md:text-xl"
