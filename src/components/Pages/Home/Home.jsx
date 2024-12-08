@@ -28,11 +28,11 @@ const Home = () => {
         </h1>
         <Fade cascade damping={0.5}>
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-3 space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-3">
               {data.map((review, index) => (
                 <div
                   key={index}
-                  className="card bg-base-100 w-96 md:w-[400px] shadow-xl mx-auto"
+                  className="card bg-base-100 w-96 md:w-[400px] shadow-xl mx-auto mb-12"
                 >
                   <figure>
                     <img

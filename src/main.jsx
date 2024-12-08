@@ -14,6 +14,7 @@ import Register from "./components/Pages/Register";
 import ReviewDetails from "./components/Pages/ReviewDetails";
 import UpdateReview from "./components/Pages/UpdateReview";
 import Error from "./components/Pages/Error";
+import Private from "./components/PriveteRoute/Private";
 
 const router = createBrowserRouter([
   {
@@ -35,27 +36,47 @@ const router = createBrowserRouter([
         path: "/reviews/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3333/reviews/${params.id}`),
-        element: <ReviewDetails></ReviewDetails>,
+        element: (
+          <Private>
+            <ReviewDetails></ReviewDetails>
+          </Private>
+        ),
       },
       {
         path: "/addReview",
-        element: <AddReview></AddReview>,
+        element: (
+          <Private>
+            <AddReview></AddReview>,
+          </Private>
+        ),
       },
       {
         path: "/myReview",
         loader: () => fetch(`http://localhost:3333/reviews`),
-        element: <MyReview></MyReview>,
+        element: (
+          <Private>
+            <MyReview></MyReview>,
+          </Private>
+        ),
       },
       {
         path: "/updateReviews/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3333/reviews/${params.id}`),
-        element: <UpdateReview></UpdateReview>,
+        element: (
+          <Private>
+            <UpdateReview></UpdateReview>,
+          </Private>
+        ),
       },
       {
         path: "/wishlist",
         loader: () => fetch(`http://localhost:3333/wishlist`),
-        element: <WishList></WishList>,
+        element: (
+          <Private>
+            <WishList></WishList>,
+          </Private>
+        ),
       },
       {
         path: "/login",

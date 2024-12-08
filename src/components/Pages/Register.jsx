@@ -19,6 +19,27 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    // Password validation: At least one uppercase, one lowercase, and min length of 6
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Invalid Password",
+      });
+      return;
+    }
+
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -46,6 +67,7 @@ const Register = () => {
           title: "Signed in successfully",
         });
         navigate("/");
+
         fetch("http://localhost:3333/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -57,7 +79,6 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             console.log("User saved:", data);
           })
           .catch((error) => {
@@ -72,13 +93,13 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="flex w-full max-w-4xl bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="flex w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
         {/* Left Image Section */}
         <div className="w-1/2 bg-cover bg-center bg-banner"></div>
 
         {/* Right Form Section */}
-        <div className="w-1/2 bg-gray-900 p-8">
+        <div className="w-1/2 p-8">
           <h2 className="text-2xl text-white font-semibold mb-6">
             REGISTRATION
           </h2>
