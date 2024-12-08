@@ -57,7 +57,7 @@ const MyReview = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <span className="loading loading-spinner text-info"></span>
+        <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
   }
@@ -68,7 +68,7 @@ const MyReview = () => {
         MY REVIEW
       </h1>
       {allReview.length === 0 ? (
-        <div className="text-center my-12">
+        <div className="text-center my-12 min-h-screen">
           <img
             src={noDataFound}
             alt="No data found"

@@ -94,13 +94,13 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="flex w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+      <div className="md:flex w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
         {/* Left Image Section */}
-        <div className="w-1/2 bg-cover bg-center bg-banner"></div>
+        <div className="md:w-1/2 bg-cover bg-center bg-banner"></div>
 
         {/* Right Form Section */}
-        <div className="w-1/2 p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6">
+        <div className="md:w-1/2 p-8">
+          <h2 className="text-2xl font-semibold mb-6">
             REGISTRATION
           </h2>
           <form onSubmit={handleSubmit}>
