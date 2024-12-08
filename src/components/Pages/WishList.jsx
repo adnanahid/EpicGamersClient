@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { ClipLoader } from "react-spinners";
-import noDataFound from "../../assets/nodatafound.jpg"
+import noDataFound from "../../assets/nodatafound.jpg";
 
 const WishList = () => {
   const { user, loading } = useContext(AuthContext);
@@ -26,6 +26,9 @@ const WishList = () => {
   if (!myWishlist.length) {
     return (
       <div className="text-center pt-24 min-h-screen">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">
+          MY WISHLIST
+        </h1>
         <img
           src={noDataFound}
           alt="No data found"
@@ -43,7 +46,7 @@ const WishList = () => {
 
   return (
     <div className="overflow-x-auto max-w-screen-md mx-auto pt-24 min-h-screen">
-      <h1 className="text-3xl md:text-4xl font-bold text-center">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">
         MY WISHLIST
       </h1>
       <table className="table table-zebra w-full">

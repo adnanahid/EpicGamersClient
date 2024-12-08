@@ -18,8 +18,9 @@ This project primarily uses the following technologies:
 - Backend:
     - Node.js and Express.js for API development.
     - MongoDB for storing game data, user reviews, and ratings.
-## Key features 
 
+
+## Key features 
 - Gamers can write detailed reviews for games, including pros, cons, and personal experiences.
 - Readers can browse reviews sorted by top ratings or recency.
 - Highlights the highest-rated games based on user ratings.

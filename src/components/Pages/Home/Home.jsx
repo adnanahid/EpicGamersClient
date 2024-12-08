@@ -21,11 +21,11 @@ const Home = () => {
             Highest Rated Game
           </h1>
           {data && data.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-screen-xl mx-auto">
               {data.map((review, index) => (
                 <div
                   key={index}
-                  className="card bg-base-100 shadow-xl mx-auto transition-transform transform hover:scale-105"
+                  className="card bg-base-100 shadow-xl mx-auto transition-transform transform hover:scale-105 w-96 md:w-[370px] lg:w-96"
                 >
                   <figure>
                     <img

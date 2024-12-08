@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import noDataFound from "../../assets/nodatafound.jpg"
+import noDataFound from "../../assets/nodatafound.jpg";
 
 const AllReview = () => {
   const reviewsData = useLoaderData();
@@ -55,26 +55,32 @@ const AllReview = () => {
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
           >
-            {["Action", "Adventure", "RPG", "Simulation", "Card", "Racing", "Board"].map(
-              (genre) => (
-                <li key={genre}>
-                  <button onClick={() => handleFilterByGenre(genre)}>
-                    {genre}
-                  </button>
-                </li>
-              )
-            )}
+            {[
+              "Action",
+              "Adventure",
+              "RPG",
+              "Simulation",
+              "Card",
+              "Racing",
+              "Board",
+            ].map((genre) => (
+              <li key={genre}>
+                <button onClick={() => handleFilterByGenre(genre)}>
+                  {genre}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       {/* Review cards */}
       {reviews.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="card bg-base-100 w-96 md:w-[550px] shadow-xl mx-auto my-6"
+              className="card bg-base-100 mb-12 shadow-xl mx-auto w-full max-w-xs sm:max-w-md"
             >
               <figure className="object-contain">
                 <img
@@ -109,7 +115,9 @@ const AllReview = () => {
           <h2 className="text-2xl font-semibold text-gray-600">
             No reviews available at the moment.
           </h2>
-          <p className="text-gray-500">Try adjusting your filters or check back later.</p>
+          <p className="text-gray-500">
+            Try adjusting your filters or check back later.
+          </p>
         </div>
       )}
     </div>
