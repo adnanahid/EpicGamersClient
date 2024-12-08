@@ -3,7 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const AddReview = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +27,16 @@ const AddReview = () => {
       return;
     }
 
-    const reviewInfo = { thumbnail, title, review, rating, year, genres, email, name };
+    const reviewInfo = {
+      thumbnail,
+      title,
+      review,
+      rating,
+      year,
+      genres,
+      email,
+      name,
+    };
 
     fetch("https://a10-server-side-iota.vercel.app/reviews", {
       method: "POST",
@@ -51,6 +60,14 @@ const AddReview = () => {
         console.error(err);
       });
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="spinner border-t-transparent border-4 border-blue-500 w-16 h-16 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-12">
@@ -107,7 +124,7 @@ const AddReview = () => {
             {/* Rating */}
             <div className="mb-4">
               <label className="block text-sm mb-2" htmlFor="rating">
-                Rating (1-10)
+                Rating (1-5)
               </label>
               <input
                 type="number"
@@ -116,7 +133,7 @@ const AddReview = () => {
                 placeholder="Give your rating"
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 min="1"
-                max="10"
+                max="5"
                 required
               />
             </div>
@@ -205,4 +222,3 @@ const AddReview = () => {
 };
 
 export default AddReview;
-

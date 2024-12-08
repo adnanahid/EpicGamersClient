@@ -59,8 +59,8 @@ const ArticleCard = ({ article }) => {
 
 const ArticlesList = () => {
   return (
-    <div className="p-6 max-w-screen-xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-24">
+    <div className="mt-24 max-w-screen-xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-12">
         News for gammer's
       </h1>
       {articles.map((article, index) => (

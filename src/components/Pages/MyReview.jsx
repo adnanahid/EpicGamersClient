@@ -8,7 +8,10 @@ import noDataFound from "../../assets/nodatafound.jpg";
 const MyReview = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
   const allReviews = useLoaderData();
-  const [allReview, setReview] = useState([]);
+  const [allReview, setReview] = useState(allReviews);
+
+  console.log(allReview);
+  console.log(allReviews);
 
   // Sync reviews when user or loader data changes
   useEffect(() => {
@@ -32,21 +35,14 @@ const MyReview = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        fetch(
-          `${
-            process.env.REACT_APP_API_BASE_URL || "http://localhost:3333"
-          }/reviews/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
-          .then((res) => {
-            if (!res.ok) throw new Error("Failed to delete the review.");
-            return res.json();
-          })
+        fetch(`https://a10-server-side-iota.vercel.app/deleteReviews/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
           .then(() => {
             Swal.fire("Deleted!", "Your review has been deleted.", "success");
             const restReview = allReview.filter((review) => review._id !== _id);
+            console.log("Updated reviews:", restReview); // Log updated reviews
             setReview(restReview);
           })
           .catch((error) => {
@@ -68,7 +64,9 @@ const MyReview = () => {
 
   return (
     <div className="pt-24 px-4 md:px-8 max-w-screen-xl mx-auto min-h-screen">
-      <h1 className="text-3xl font-bold md:text-4xl text-center mb-6">MY REVIEW</h1>
+      <h1 className="text-3xl font-bold md:text-4xl text-center mb-6">
+        MY REVIEW
+      </h1>
       {allReview.length === 0 ? (
         <div className="text-center my-12">
           <img
