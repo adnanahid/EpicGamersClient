@@ -1,4 +1,8 @@
 import React from "react";
+import news1 from "../../../assets/news1.jpg";
+import news2 from "../../../assets/news2.jpg";
+import news3 from "../../../assets/news3.jpg";
+import news4 from "../../../assets/news4.png";
 
 const articles = [
   {
@@ -7,14 +11,14 @@ const articles = [
     description:
       "With numerous classes, countless skills, and a plethora of challenges, Path of Exile 2 is shaping up to be a meaty ARPG sequel",
     time: "20h ago",
-    image: "https://via.placeholder.com/150", // Replace with the actual image URL
+    image: news1, // Replace with the actual image URL
   },
   {
     title: "Marvel Rivals: A guide to all 33 heroes and their playstyles",
     description:
       "With 33 heroes to choose from, Marvel Rivals is bound to be a surefire shooter spectacle—but which character is the perfect match for your playstyle? Our guide can help.",
     time: "1d ago",
-    image: "https://via.placeholder.com/150", // Replace with the actual image URL
+    image: news2, // Replace with the actual image URL
   },
   {
     title:
@@ -22,14 +26,14 @@ const articles = [
     description:
       "Shatterline is a competitive shooter that combines traditional multiplayer game modes with a deep roguelike campaign to keep you coming back for more.",
     time: "2d ago",
-    image: "https://via.placeholder.com/150", // Replace with the actual image URL
+    image: news3, // Replace with the actual image URL
   },
   {
     title: "Six brilliant details in LEGO Star Wars: The Skywalker Saga",
     description:
       "Here are some of our favorite things about the brick-based sci-fi action-adventure",
     time: "2d ago",
-    image: "https://via.placeholder.com/150", // Replace with the actual image URL
+    image: news4, // Replace with the actual image URL
   },
 ];
 

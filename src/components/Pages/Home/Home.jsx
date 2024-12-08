@@ -10,23 +10,16 @@ import Accordion from "./Accordion";
 const Home = () => {
   const data = useLoaderData();
 
-  // // Const Top 6 rated game
-  // const topData = data.slice(1, 7);
-
-  // // Sort data by rating in descending order
-  // const sortedData = [...topData].sort(
-  //   (a, b) => Number(b.rating) - Number(a.rating)
-  // );
 
   return (
     <div>
       <Slider></Slider>
 
-      <div className="my-36 max-w-screen-xl mx-auto">
-        <h1 className="text-4xl font-bold text-center my-12">
-          Highest Rated Game
-        </h1>
-        <Fade cascade damping={0.5}>
+      <Fade cascade damping={0.3}>
+        <div className="my-36 max-w-screen-xl mx-auto">
+          <h1 className="text-4xl font-bold text-center my-12">
+            Highest Rated Game
+          </h1>
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3">
               {data.map((review, index) => (
@@ -64,12 +57,12 @@ const Home = () => {
               ))}
             </div>
           </div>
-        </Fade>
-      </div>
+        </div>
 
-      <ArticlesList></ArticlesList>
+        <ArticlesList></ArticlesList>
 
-      <Accordion></Accordion>
+        <Accordion></Accordion>
+      </Fade>
     </div>
   );
 };

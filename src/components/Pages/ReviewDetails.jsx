@@ -137,8 +137,9 @@ const ReviewDetails = () => {
   };
 
   return (
-    <div className="pt-48">
-      <div className="max-w-3xl mx-auto bg-gray-800 text-white rounded-lg shadow-md overflow-hidden">
+    <div className="pt-24 min-h-screen">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-12">Details</h1>
+      <div className="max-w-3xl  mx-auto rounded-lg shadow-md overflow-hidden">
         {/* Thumbnail */}
         <img
           src={reviewData?.thumbnail}
@@ -150,19 +151,19 @@ const ReviewDetails = () => {
         <div className="p-6">
           <h2 className="text-2xl font-semibold mb-2">{reviewData?.title}</h2>
 
-          <p className="text-gray-400 text-sm mb-2">
+          <p className="text-sm mb-2">
             <span className="font-semibold">Genres:</span> {reviewData?.genres}
           </p>
 
-          <p className="text-gray-400 text-sm mb-2">
+          <p className="text-sm mb-2">
             <span className="font-semibold">Release:</span> {reviewData?.year}
           </p>
 
-          <p className="text-gray-300 mb-4">
+          <p className="mb-4">
             <span className="font-semibold">Review:</span> {reviewData?.review}
           </p>
 
-          <div className="text-gray-400 text-sm">
+          <div className="text-sm">
             <p>
               <span className="font-semibold">Reviewer:</span>{" "}
               {reviewData?.name}

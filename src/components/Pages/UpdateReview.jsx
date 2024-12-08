@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-const updateReview = () => {
+const UpdateReview = () => {
   const data = useLoaderData();
   console.log(data);
   const handleSubmit = (e) => {
@@ -41,20 +41,18 @@ const updateReview = () => {
         });
       });
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
-        <div className="p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6 text-center">
+      <div className="w-full max-w-2xl rounded-lg shadow-lg">
+        <div className="p-8 bg-white">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
             UPDATE REVIEW
           </h2>
           <form onSubmit={handleSubmit}>
             {/* Game Cover IMG URL Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="photo"
-              >
+              <label className="block text-sm mb-2" htmlFor="photo">
                 Thumbnail
               </label>
               <input
@@ -63,15 +61,12 @@ const updateReview = () => {
                 id="thumbnail"
                 defaultValue={data.thumbnail}
                 placeholder="Thumbnail URL"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Game's Name Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Game's Name
               </label>
               <input
@@ -80,15 +75,12 @@ const updateReview = () => {
                 id="title"
                 defaultValue={data.title}
                 placeholder="Enter Game's Name"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Description Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Review
               </label>
               <textarea
@@ -96,16 +88,13 @@ const updateReview = () => {
                 name="review"
                 id="review"
                 defaultValue={data.review}
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Write your detailed review"
               />
             </div>
             {/* Rating Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="rating"
-              >
+              <label className="block text-sm mb-2" htmlFor="rating">
                 Rating
               </label>
               <input
@@ -113,7 +102,7 @@ const updateReview = () => {
                 name="rating"
                 id="rating"
                 defaultValue={data.rating}
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Give your rating"
                 min="1"
                 max="5"
@@ -121,10 +110,7 @@ const updateReview = () => {
             </div>
             {/* Published year */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Published Year
               </label>
               <input
@@ -133,22 +119,19 @@ const updateReview = () => {
                 id="year"
                 defaultValue={data.year}
                 placeholder="Published Year"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Genres */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Genres
               </label>
               <select
                 name="genres"
                 id="genres"
                 defaultValue={data.genres}
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
@@ -160,7 +143,7 @@ const updateReview = () => {
               </select>
             </div>
 
-            {/* Registration Button */}
+            {/* Update Button */}
             <button
               className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition duration-300"
               type="submit"
@@ -174,4 +157,4 @@ const updateReview = () => {
   );
 };
 
-export default updateReview;
+export default UpdateReview;

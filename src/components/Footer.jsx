@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1d232a] text-gray-300">
+    <footer className=" text-white bg-[#4a4a4d]">
       <div className="container mx-auto px-6 py-10">
         {/* Social Media Section */}
         <div className="flex justify-between items-center border-b border-gray-700 pb-6">
@@ -37,8 +37,10 @@ const Footer = () => {
               <i className="fas fa-gem mr-2"></i>EPIC GAMERS
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
+              We are a passionate community of gamers and tech enthusiasts,
+              bringing you the latest news, reviews, and in-depth guides on all
+              things gaming. Join us as we explore new releases, technologies,
+              and gaming culture.
             </p>
           </div>
 
@@ -47,16 +49,24 @@ const Footer = () => {
             <h6 className="uppercase font-semibold mb-4">Products</h6>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Angular</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Angular
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">React</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  React
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Vue</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Vue
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Laravel</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Laravel
+                </a>
               </li>
             </ul>
           </div>
@@ -66,16 +76,24 @@ const Footer = () => {
             <h6 className="uppercase font-semibold mb-4">Useful Links</h6>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Pricing</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Pricing
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Settings</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Settings
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Orders</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Orders
+                </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:underline">Help</a>
+                <a href="#" className="text-gray-400 hover:underline">
+                  Help
+                </a>
               </li>
             </ul>
           </div>
@@ -93,12 +111,10 @@ const Footer = () => {
                 info@example.com
               </li>
               <li className="flex items-center">
-                <i className="fas fa-phone mr-2"></i>
-                + 01 234 567 88
+                <i className="fas fa-phone mr-2"></i>+ 01 234 567 88
               </li>
               <li className="flex items-center">
-                <i className="fas fa-print mr-2"></i>
-                + 01 234 567 89
+                <i className="fas fa-print mr-2"></i>+ 01 234 567 89
               </li>
             </ul>
           </div>
@@ -106,8 +122,11 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center py-6 border-t border-gray-700 mt-6">
-          © 2021 Copyright: 
-          <a href="#" className="text-gray-400 hover:underline"> epicgamers.com</a>
+          © 2021 Copyright:
+          <a href="#" className="text-gray-400 hover:underline">
+            {" "}
+            epicgamers.com
+          </a>
         </div>
       </div>
     </footer>
