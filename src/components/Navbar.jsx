@@ -51,9 +51,13 @@ const Navbar = () => {
           >
             <NavLink to="/">Home</NavLink>
             <NavLink to="/allReview">All Review</NavLink>
-            <NavLink to="/addReview">Add Review</NavLink>
-            <NavLink to="/myReview">My Review</NavLink>
-            <NavLink to="/wishList">WishList</NavLink>
+            {user && (
+              <>
+                <NavLink to="/addReview">Add Review</NavLink>
+                <NavLink to="/myReview">My Review</NavLink>
+                <NavLink to="/wishList">WishList</NavLink>
+              </>
+            )}
           </div>
         </div>
         <a className="btn btn-ghost text-xl">Epic Gamer</a>
