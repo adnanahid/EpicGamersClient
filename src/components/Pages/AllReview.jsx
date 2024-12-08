@@ -66,8 +66,8 @@ const AllReview = () => {
   };
 
   return (
-    <div className="md:pt-48 max-w-screen-xl mx-auto">
-      <h1 className="text-5xl font-bold text-center mb-24">
+    <div className="md:pt-48 pt-24 max-w-screen-xl mx-auto">
+      <h1 className="text-3xl lg:text-4xl font-bold text-center ;lg:mb-24 mb-6">
         All reviews are here
       </h1>
 
@@ -133,7 +133,7 @@ const AllReview = () => {
               <img
                 src={review.thumbnail}
                 alt={review.title}
-                className="h-[300px] object-fit"
+                className="h-52 md:h-64 lg:h-72 object-fit"
               />
             </figure>
             <div className="card-body">

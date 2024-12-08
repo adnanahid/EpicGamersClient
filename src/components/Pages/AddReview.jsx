@@ -53,10 +53,10 @@ const AddReview = () => {
       });
   };
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center pt-12">
       <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
-        <div className="bg-gray-900 p-8">
-          <h2 className="text-2xl text-white font-semibold mb-6">REVIEW</h2>
+        <div className="p-8">
+          <h2 className="text-2xl text-white font-semibold mb-6 text-center">POST YOUR REVIEW</h2>
           <form onSubmit={handleSubmit}>
             {/* Game Cover IMG URL Input */}
             <div className="mb-4">

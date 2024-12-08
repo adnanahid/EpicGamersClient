@@ -56,9 +56,9 @@ const Navbar = () => {
             <NavLink to="/wishList">WishList</NavLink>
           </div>
         </div>
-        <a className="btn btn-ghost text-xl">Epic Gamer</a>
+        <a className="btn btn-ghost text-xl text-white">Epic Gamer</a>
       </div>
-      <div className="navbar-center hidden lg:flex gap-5">
+      <div className="navbar-center hidden lg:flex gap-5 text-white">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allReview">All Review</NavLink>
         {user && (
@@ -69,7 +69,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      <div className="navbar-end gap-3">
+      <div className="navbar-end gap-3 text-white">
         <label className="grid cursor-pointer place-items-center">
           <input
             onClick={() => setToggle(!toggle)}
@@ -109,7 +109,7 @@ const Navbar = () => {
         </label>
         {user ? (
           <div className="flex gap-5 items-center">
-            <button onClick={handleSignOut} className="btn">
+            <button onClick={handleSignOut} className="">
               Sign Out
             </button>
             <Tooltip id="my-tooltip" />

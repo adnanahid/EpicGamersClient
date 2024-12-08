@@ -38,13 +38,14 @@
   text-decoration: underline;
 }
 
-.active:hover {
-  color: #1e90ff; /* Cool blue on hover */
-  transform: translateY(-3px);
-  transition: 300ms;
-}
-
 html{
   overflow-y: scroll;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+.lato-thin {
+  font-family: "Lato", serif;
+  font-style: normal;
 }
 
