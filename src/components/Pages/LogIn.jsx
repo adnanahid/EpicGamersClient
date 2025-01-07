@@ -98,7 +98,7 @@ const LogIn = () => {
           <form onSubmit={handleLogin}>
             {/* Email Input */}
             <div className="mb-4">
-              <label className="block text-gray-400 text-sm mb-2" htmlFor="email">
+              <label className="block text-sm mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -106,13 +106,13 @@ const LogIn = () => {
                 name="email"
                 id="email"
                 placeholder="Enter your Email"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-[#4a4a4d] text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Password Input */}
             <div className="mb-4 relative">
-              <label className="block text-gray-400 text-sm mb-2" htmlFor="password">
+              <label className="block text-sm mb-2" htmlFor="password">
                 Password
               </label>
               <input
@@ -120,7 +120,7 @@ const LogIn = () => {
                 name="password"
                 id="password"
                 placeholder="Enter Your Password"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-[#4a4a4d] text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
                 type="button"

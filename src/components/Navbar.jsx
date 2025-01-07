@@ -51,11 +51,15 @@ const Navbar = () => {
           >
             <NavLink to="/">Home</NavLink>
             <NavLink to="/allReview">All Review</NavLink>
+            <NavLink to="/about-epic">About Epic</NavLink>
+            <NavLink to="/support">Support</NavLink>
             {user && (
               <>
                 <NavLink to="/addReview">Add Review</NavLink>
                 <NavLink to="/myReview">My Review</NavLink>
                 <NavLink to="/wishList">WishList</NavLink>
+                <NavLink to="/about-epic">About Epic</NavLink>
+                <NavLink to="/support">Support</NavLink>
               </>
             )}
           </div>
@@ -65,11 +69,15 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex gap-5">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allReview">All Review</NavLink>
+        <NavLink to="/about-epic">About Epic</NavLink>
+        <NavLink to="/support">Support</NavLink>
         {user && (
           <div className="lg:flex gap-5">
             <NavLink to="/addReview">Add Review</NavLink>
             <NavLink to="/myReview">My Review</NavLink>
             <NavLink to="/wishList">WishList</NavLink>
+            <NavLink to="/about-epic">About Epic</NavLink>
+            <NavLink to="/support">Support</NavLink>
           </div>
         )}
       </div>

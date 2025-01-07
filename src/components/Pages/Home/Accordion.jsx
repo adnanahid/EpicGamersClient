@@ -2,7 +2,7 @@ import React from "react";
 
 const Accordion = () => {
   return (
-    <div className="max-w-screen-xl mx-auto my-12">
+    <div className="max-w-screen-xl mx-auto my-12 px-1">
       <h1 className="text-4xl text-center font-bold mb-12">
         Frequently Asked Questions
       </h1>

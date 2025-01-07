@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import noDataFound from "../../assets/nodatafound.jpg";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AllReview = () => {
   const reviewsData = useLoaderData();
   const [reviews, setReviews] = useState(reviewsData);
-
+  const { loading } = useContext(AuthContext);
   const handleSortByYear = () => {
     const sortedReviews = [...reviews].sort((a, b) => b.year - a.year); // Descending order
     setReviews(sortedReviews);
@@ -22,6 +23,7 @@ const AllReview = () => {
     );
     setReviews(filteredReviews);
   };
+
 
   return (
     <div className="pt-24 max-w-screen-xl mx-auto min-h-screen">
@@ -96,7 +98,7 @@ const AllReview = () => {
                 <div className="card-actions justify-center">
                   <Link
                     to={`/reviews/${review._id}`}
-                    className="btn btn-primary w-full"
+                    className="btn bg-[#4a4a4d] text-white w-full"
                   >
                     Explore Details
                   </Link>

@@ -11,14 +11,16 @@ const articles = [
     description:
       "With numerous classes, countless skills, and a plethora of challenges, Path of Exile 2 is shaping up to be a meaty ARPG sequel",
     time: "20h ago",
-    image: news1, // Replace with the actual image URL
+    image: news1,
+    link: "https://store.epicgames.com/en-US/news/marvel-rivals-guide-all-33-heroes-best-playstyles",
   },
   {
     title: "Marvel Rivals: A guide to all 33 heroes and their playstyles",
     description:
       "With 33 heroes to choose from, Marvel Rivals is bound to be a surefire shooter spectacle—but which character is the perfect match for your playstyle? Our guide can help.",
     time: "1d ago",
-    image: news2, // Replace with the actual image URL
+    image: news2,
+    link: "https://store.epicgames.com/en-US/news/shatterline-launch-roguelike-plus-competitive-shooter",
   },
   {
     title:
@@ -26,20 +28,22 @@ const articles = [
     description:
       "Shatterline is a competitive shooter that combines traditional multiplayer game modes with a deep roguelike campaign to keep you coming back for more.",
     time: "2d ago",
-    image: news3, // Replace with the actual image URL
+    image: news3,
+    link: "https://store.epicgames.com/en-US/news/breaking-down-all-8-available-operatives-in-delta-force-in-our-guide",
   },
   {
     title: "Six brilliant details in LEGO Star Wars: The Skywalker Saga",
     description:
       "Here are some of our favorite things about the brick-based sci-fi action-adventure",
     time: "2d ago",
-    image: news4, // Replace with the actual image URL
+    image: news4,
+    link: "https://store.epicgames.com/en-US/news/delta-force-open-beta-launch",
   },
 ];
 
 const ArticleCard = ({ article }) => {
   return (
-    <div className="flex space-x-4 pb-6">
+    <div className="flex space-x-4 pb-6 px-1">
       <img
         src={article.image}
         alt={article.title}
@@ -49,9 +53,11 @@ const ArticleCard = ({ article }) => {
         <p className="text-sm ">{article.time}</p>
         <h3 className="text-lg font-bold mt-1">{article.title}</h3>
         <p className=" text-sm mt-2">{article.description}</p>
-        <button className="text-blue-500 mt-2 text-sm font-semibold">
-          Read more
-        </button>
+        <a href={article.link} target="_blank">
+          <button className="text-blue-500 mt-2 text-sm font-semibold">
+            Read more
+          </button>
+        </a>
       </div>
     </div>
   );
@@ -59,7 +65,7 @@ const ArticleCard = ({ article }) => {
 
 const ArticlesList = () => {
   return (
-    <div className="mt-24 max-w-screen-xl mx-auto">
+    <div className="mt-24 max-w-screen-xl mx-auto px-1">
       <h1 className="text-4xl font-bold text-center mb-12">
         News for gammer's
       </h1>

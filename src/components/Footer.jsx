@@ -2,28 +2,38 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" text-white bg-[#4a4a4d]">
-      <div className="container mx-auto px-6 py-10">
+    <footer className="text-white bg-[#4a4a4d]">
+      <div className="container mx-auto px-6 pt-16">
         {/* Social Media Section */}
-        <div className="flex justify-between items-center border-b border-gray-700 pb-6">
+        <div className="flex justify-between items-center border-b border-white pb-6">
           <p>Get connected with us on social networks:</p>
           <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-gray-100">
+            <a
+              href="https://www.facebook.com/profile.php?id=100013639030004"
+              target="_blank"
+              className="text-gray-400 hover:text-gray-100"
+            >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="text-gray-400 hover:text-gray-100">
+            <a
+              href="https://x.com/dnan_nahid"
+              target="_blank"
+              className="text-gray-400 hover:text-gray-100"
+            >
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" className="text-gray-400 hover:text-gray-100">
-              <i className="fab fa-google"></i>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-100">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-100">
+            <a
+              href="https://www.linkedin.com/in/adnan-nahid-693299219/"
+              target="_blank"
+              className="text-gray-400 hover:text-gray-100"
+            >
               <i className="fab fa-linkedin"></i>
             </a>
-            <a href="#" className="text-gray-400 hover:text-gray-100">
+            <a
+              href="https://github.com/adnanahid"
+              target="_blank"
+              className="text-gray-400 hover:text-gray-100"
+            >
               <i className="fab fa-github"></i>
             </a>
           </div>
@@ -48,26 +58,10 @@ const Footer = () => {
           <div>
             <h6 className="uppercase font-semibold mb-4">Products</h6>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Angular
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  React
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Vue
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Laravel
-                </a>
-              </li>
+              <li>Angular</li>
+              <li>React</li>
+              <li>Vue</li>
+              <li>Laravel</li>
             </ul>
           </div>
 
@@ -75,26 +69,10 @@ const Footer = () => {
           <div>
             <h6 className="uppercase font-semibold mb-4">Useful Links</h6>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:underline">
-                  Help
-                </a>
-              </li>
+              <li>Pricing</li>
+              <li>Settings</li>
+              <li>Orders</li>
+              <li>Help</li>
             </ul>
           </div>
 
@@ -121,7 +99,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="text-center py-6 border-t border-gray-700 mt-6">
+        <div className="text-center py-6 border-t border-white mt-6">
           © 2021 Copyright:
           <a href="#" className="text-gray-400 hover:underline">
             {" "}

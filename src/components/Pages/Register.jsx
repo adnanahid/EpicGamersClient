@@ -100,16 +100,11 @@ const Register = () => {
 
         {/* Right Form Section */}
         <div className="md:w-1/2 p-8">
-          <h2 className="text-2xl font-semibold mb-6">
-            REGISTRATION
-          </h2>
+          <h2 className="text-2xl font-semibold mb-6">REGISTRATION</h2>
           <form onSubmit={handleSubmit}>
             {/* Name Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="name"
-              >
+              <label className="block text-sm mb-2" htmlFor="name">
                 Name
               </label>
               <input
@@ -117,15 +112,12 @@ const Register = () => {
                 name="name"
                 id="name"
                 placeholder="Enter your Name"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-[#4a4a4d] text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Email Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="email"
-              >
+              <label className="block text-sm mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -133,15 +125,12 @@ const Register = () => {
                 name="email"
                 id="email"
                 placeholder="Enter your Email"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-[#4a4a4d] text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             {/* Photo URL Input */}
             <div className="mb-4">
-              <label
-                className="block text-gray-400 text-sm mb-2"
-                htmlFor="photo"
-              >
+              <label className="block text-sm mb-2" htmlFor="photo">
                 Photo URL
               </label>
               <input
@@ -149,16 +138,13 @@ const Register = () => {
                 name="photo"
                 id="photo"
                 placeholder="Enter your Photo URL"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-[#4a4a4d] text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Password Input */}
             <div className="mb-4 relative">
-              <label
-                className="block text-gray-600 text-sm mb-2"
-                htmlFor="password"
-              >
+              <label className="block text-sm mb-2" htmlFor="password">
                 Password
               </label>
               <input
@@ -167,7 +153,7 @@ const Register = () => {
                 name="password"
                 required
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border  bg-gray-800 text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 bg-[#4a4a4d]  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 type="button"
@@ -187,7 +173,7 @@ const Register = () => {
             </button>
 
             {/* Login Link */}
-            <p className="text-gray-400 text-sm mt-4 text-center">
+            <p className="text-sm mt-4 text-center">
               Have an account?
               <Link to="/login" className="text-blue-500 hover:underline">
                 Login

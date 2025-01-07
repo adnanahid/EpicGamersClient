@@ -15,6 +15,8 @@ import ReviewDetails from "./components/Pages/ReviewDetails";
 import UpdateReview from "./components/Pages/UpdateReview";
 import Error from "./components/Pages/Error";
 import Private from "./components/PriveteRoute/Private";
+import AboutEpicGamers from "./components/Pages/AboutEpicGamers";
+import Support from "./components/Pages/Support";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +88,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/about-epic",
+        element: <AboutEpicGamers></AboutEpicGamers>,
+      },
+      {
+        path: "/support",
+        element: <Support></Support>,
       },
     ],
   },
