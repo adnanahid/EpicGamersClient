@@ -81,21 +81,21 @@ Vite for Frontend build tool & bundler
 - Discover Popular Titles – Find top-rated games based on user feedback.
 
 
-#Configuration
+# Configuration
 - Firebase Authentication – Ensure Firebase is properly set up in your .env file.
 - MongoDB Database – Use a remote MongoDB Atlas instance or local setup.
 
 #Contribution Guidelines
 We welcome contributions! Please follow these steps:
 
-##Fork the repository.
+## Fork the repository.
 Create a feature branch (git checkout -b feature-new-feature).
 Commit changes (git commit -m "Add new feature").
 Push to GitHub (git push origin feature-new-feature).
 Open a Pull Request (PR) for review.
 
 
-#License
+# License
 This project is licensed under the MIT License.
 📄 See the full LICENSE file for more details.
 
