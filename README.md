@@ -57,3 +57,24 @@ Vite for Frontend build tool & bundler
         "sort-by": "^1.2.0",
         "sweetalert2": "^11.14.5"
     }
+
+
+#  How to Run ProTracker Locally
+- Step 1: Clone the Repository
+  
+         git clone https://github.com/your-username/protracker.git
+          cd protracker
+  
+- Step 2: Install Dependencies
+  
+         npm install
+- Step 3: Set Up Environment Variables
+
+        REACT_APP_FIREBASE_API_KEY=your_api_key
+        REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+        REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+
+  
+- Step 4: Run the Development Server:
+  
+         npm run dev
