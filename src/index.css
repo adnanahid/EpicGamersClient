@@ -1,57 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.bg-banner{
+.bg-banner {
   background-image: url("../src/assets/banner.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.slider1{
+.slider1 {
   background-image: url("../src/assets/banner1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.slider2{
+.slider2 {
   background-image: url("../src/assets/banner2.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.slider3{
+.slider3 {
   background-image: url("../src/assets/banner3.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-
-.bg-error{
+.bg-error {
   background-image: url("../src/assets/errorPage.png");
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
 }
 
-.bg-noData{
+.bg-noData {
   background-image: url("../src/assets/nodatafound.jpg");
   background-position: cover;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
 }
 
-.active{
+.active {
   text-decoration: underline;
 }
 
-html{
+html {
   overflow-y: scroll;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-
 .lato-thin {
-  font-family: "Lato", serif;
-  font-style: normal;
+  font-family: "Open Sans", serif;
 }
-
