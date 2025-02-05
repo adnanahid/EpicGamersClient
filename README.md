@@ -1,7 +1,7 @@
 # Epic Gamers
 
 ## OverView
-
+<img src="https://i.ibb.co.com/5HZL7X0/Screenshot-2025-01-09-151102.png"/>
 Epic Gamers is a community-driven game review platform where gamers can explore, read, and write reviews about their favorite games. The platform enables users to share experiences, rate games, and browse top-rated titles, helping others make informed gaming decisions.
 Built with a modern, responsive design, it ensures seamless navigation and accessibility across desktops, tablets, and mobile devices.
 
