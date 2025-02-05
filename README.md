@@ -85,7 +85,7 @@ Vite for Frontend build tool & bundler
 - Firebase Authentication – Ensure Firebase is properly set up in your .env file.
 - MongoDB Database – Use a remote MongoDB Atlas instance or local setup.
 
-#Contribution Guidelines
+# Contribution Guidelines
 We welcome contributions! Please follow these steps:
 
 ## Fork the repository.
