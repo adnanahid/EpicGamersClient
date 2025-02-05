@@ -27,12 +27,6 @@ Vite for Frontend build tool & bundler
 - Game Rating System – Users can rate games on a 1 to 5-star scale.
 - Future Features – Interactive features like upvoting helpful reviews will be added in upcoming versions.
 
-# Usage
-- Explore Game Reviews – Browse the latest and top-rated game reviews.
-- Write a Review – Share your thoughts on a game, including pros and cons.
-- Rate Games – Assign a 1 to 5-star rating for each game.
-- Discover Popular Titles – Find top-rated games based on user feedback.
-
 # Dependencies
     "dependencies": {
         "@emotion/react": "^11.13.5",
@@ -78,3 +72,37 @@ Vite for Frontend build tool & bundler
 - Step 4: Run the Development Server:
   
          npm run dev
+
+
+# Usage
+- Explore Game Reviews – Browse the latest and top-rated game reviews.
+- Write a Review – Share your thoughts on a game, including pros and cons.
+- Rate Games – Assign a 1 to 5-star rating for each game.
+- Discover Popular Titles – Find top-rated games based on user feedback.
+
+
+#Configuration
+- Firebase Authentication – Ensure Firebase is properly set up in your .env file.
+- MongoDB Database – Use a remote MongoDB Atlas instance or local setup.
+
+#Contribution Guidelines
+We welcome contributions! Please follow these steps:
+
+##Fork the repository.
+Create a feature branch (git checkout -b feature-new-feature).
+Commit changes (git commit -m "Add new feature").
+Push to GitHub (git push origin feature-new-feature).
+Open a Pull Request (PR) for review.
+
+
+#License
+This project is licensed under the MIT License.
+📄 See the full LICENSE file for more details.
+
+
+# Need Help?
+## For any issues or feature requests, feel free to:
+
+Open an Issue in the repository
+Contact us at nahidhasan3.1416@gmail.com
+Let’s build an amazing game review community together! 🚀
